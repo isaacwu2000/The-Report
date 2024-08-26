@@ -5,4 +5,4 @@ def setup_gemini():
 
     load_dotenv()
     genai.configure(api_key=os.environ['GEMINI_API_KEY'])
-    gemini =  genai.GenerativeModel("gemini-1.5-flash")
+    return genai.GenerativeModel("gemini-1.5-flash")
