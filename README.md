@@ -7,3 +7,4 @@ pip install -q -U google-generativeai
 pip install python-dotenv
 pip install beautifulsoup4
 python3 -m pip install googlesearch-python
+export GEMINI_API_KEY = (Your api key)
