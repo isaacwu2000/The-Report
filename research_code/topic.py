@@ -1,9 +1,11 @@
 from find_links import find_links
 from access_web_page_text import access_web_page_text
 from setup_gemini import setup_gemini
-gemini = set_up_gemini()
+import ast
 
-print(find_links("Perform a Google Search giving an overview of the Russo-Ukrainian War and the key countries involved:"))
+gemini = setup_gemini()
+
+topic = "Russo-Ukrainian War"
 
 """
 Topic Research Prompt:
@@ -17,4 +19,13 @@ Topic Research Prompt:
 5) Explain major past international actions such as UN resolutions & conventions as well as Treaties between nations
 6) Record other important information and key statistics
 """
-# Find rel
+# Finding relevant links to make a topic overview
+topic_overview_links = ast.literal_eval(find_links(f"Perform a Google Search to find relevant and credible links that give an overview of the {topic} and the key-players/countries involved."))
+print(topic_overview_links)
+# Getting the text from each page for the topic overview
+topic_overview_pages = []
+for link in topic_overview_links:
+    print(link)
+    #topic_overview_pages.append(access_web_page_text(link))
+
+print(topic_overview_pages)

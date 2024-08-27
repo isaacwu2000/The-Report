@@ -4,4 +4,5 @@ def access_web_page_text(url):
 
     web_page = requests.get(url)
     web_page_text = BeautifulSoup(web_page.content, 'html.parser').get_text()
-    return web_page_text
+    return str(web_page_text)
+
