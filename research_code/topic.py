@@ -25,7 +25,6 @@ print(topic_overview_links)
 # Getting the text from each page for the topic overview
 topic_overview_pages = []
 for link in topic_overview_links:
-    print(link)
-    #topic_overview_pages.append(access_web_page_text(link))
+    topic_overview_pages.append({"url":link, "text":access_web_page_text(link)})
 
 print(topic_overview_pages)

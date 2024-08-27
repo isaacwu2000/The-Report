@@ -1,5 +1,6 @@
 
 def find_links(prompt):
+    import ast
     from setup_gemini import setup_gemini
     gemini = setup_gemini()
 
@@ -40,7 +41,7 @@ def find_links(prompt):
     if function_call.name == "google_search":
         results = google_search(args["query"])
         useful_links = gemini.generate_content(f"Which of the following links are most useful in obtaining information that answers the following: {prompt}? Consider the validity of the sources, with the UN (best source), international politics research organization (such as the Council Foriegn Relations), educational institutions, and credible news outlets being the most reliable. Also, note that statements by world leaders and national government resources (such as policy plans) are good sources for information on that SPECFIC country. These are the links: {results}. Output the EXACT URLs (in quotations) of the best sources in the format of a EXACT python list (Ex. ['url1', 'url2', 'etc']). DO NOT write ANYTHING ELSE. DO NOT use deliminators or write 'python' at the start of the list")
-        return useful_links.text
+        return ast.literal_eval(useful_links.text)
 
     else:
         return "An error occured. Please try again."
